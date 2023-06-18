@@ -17,7 +17,7 @@ async function callMe() {
 
   let res = await data.json()
 
-  if ((Math.round(res.data[1].quote.USD.price) > 1729)) {
+  if ((Math.round(res.data[1].quote.USD.price) > 1745)) {
     client.calls.create({
       url: "http://demo.twilio.com/docs/voice.xml",
       to: "+919875619471",
