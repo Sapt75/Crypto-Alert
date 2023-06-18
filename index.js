@@ -1,14 +1,13 @@
 const fetch = require("node-fetch");
 const accountSid = "AC20a295a486412d9836b9b2fc499cc8b4";
-const authToken = "9df761ac766ed9e98780f39260f27abd";
+const authToken = "18c92214f53b68e4e8f65f6ae7336975";
 const client = require("twilio")(accountSid, authToken);
 const express = require('express')
 const app = express()
 const port = 3000
 
 
-
-async function getData() {
+async function callMe() {
   let data = await fetch(`https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest?limit=10`, {
     method: "GET",
     headers: {
@@ -31,9 +30,13 @@ async function getData() {
 
 
 
-app.get('/', (req, res) => {
-  getData()
-  res.send("Succesful")
+
+
+
+
+app.get('/', async (req, res) => {
+  callMe()
+    res.send("Successful")
 })
 
 app.listen(port, () => {
