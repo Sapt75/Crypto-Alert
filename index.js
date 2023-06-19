@@ -1,6 +1,7 @@
 const fetch = require("node-fetch");
-const accountSid = "AC20a295a486412d9836b9b2fc499cc8b4";
-const authToken = "18c92214f53b68e4e8f65f6ae7336975";
+require('dotenv').config()
+const accountSid = process.env.SID;
+const authToken = process.env.TOKEN;
 const client = require("twilio")(accountSid, authToken);
 const express = require('express')
 const app = express()
@@ -17,7 +18,7 @@ async function callMe() {
 
   let res = await data.json()
 
-  if ((Math.round(res.data[1].quote.USD.price) > 1715)) {
+  if ((Math.round(res.data[1].quote.USD.price) > 1714)) {
     client.calls.create({
       url: "http://demo.twilio.com/docs/voice.xml",
       to: "+919875619471",
